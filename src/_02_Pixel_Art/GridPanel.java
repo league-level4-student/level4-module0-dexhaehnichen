@@ -39,7 +39,7 @@ Pixel[][] pixels;
 		//3. Iterate through the array and initialize each element to a new pixel.
 		for (int i = 0; i < pixels.length; i++) {
 			for (int j = 0; j < pixels[i].length; j++) {
-				pixels[i][j] = new Pixel(i, j);
+				pixels[i][j] = new Pixel(i * pixelWidth, j * pixelHeight);
 			}
 		}
 		
@@ -52,7 +52,7 @@ Pixel[][] pixels;
 	public void clickPixel(int mouseX, int mouseY) {
 		//5. Use the mouseX and mouseY variables to change the color
 		//   of the pixel that was clicked. *HINT* Use the pixel's dimensions.
-		pixels[mouseX][mouseY].color = color;
+		pixels[mouseX / pixelWidth][mouseY / pixelWidth].color = color;
 	}
 	
 	@Override
@@ -63,9 +63,10 @@ Pixel[][] pixels;
 		for (int i = 0; i < pixels.length; i++) {
 			for (int j = 0; j < pixels[i].length; j++) {
 				g.setColor(pixels[i][j].color);
-				g.fillRect(i,j,pixelWidth,pixelHeight);
-				g.drawRect(i,j,pixelWidth,pixelHeight);
-			}
+				g.fillRect(pixels[i][j].x,pixels[i][j].y,pixelWidth,pixelHeight);
+				g.setColor(color.BLACK);
+				g.drawRect(pixels[i][j].x,pixels[i][j].y,pixelWidth,pixelHeight);
+				}
 		}
 	}
 }
