@@ -112,15 +112,68 @@ public class WorldPanel extends JPanel implements MouseListener, ActionListener 
 		repaint();
 	}
 	
+	
+	
 	//9. Complete the method.
 	//   It returns an int of 8 or less based on how many
 	//   living neighbors there are of the 
 	//   cell identified by x and y
 	public int getLivingNeighbors(int x, int y){
+		/*  _____ _______ _________
+			|353| |35553| |3555553|
+			|585| |58885| |5888885|
+			|353| |58885| |5888885|
+			----- |58885| |5888885|
+				  |35553| |5888885|
+				  ------- |5888885|
+						  |3555553|
+						  ---------
+		*/
 		
-		return 0;
+		// Broken, fix this
+		int numLiveNeighbors = 0;
+		
+		//corners
+			//upper left
+			if(x == 0 && y == 0) {
+				if(cells[x+1][y].isAlive == true) {
+					numLiveNeighbors ++;
+				}
+				if(cells[x+1][y+1].isAlive == true) {
+					numLiveNeighbors ++;
+				}
+				if(cells[x][y+1].isAlive == true) {
+					numLiveNeighbors ++; 
+				}
+			}
+			//upper right
+			if(x == 0 && y == getHeight()) {
+				if(cells[x-1][y].isAlive == false) {
+					numLiveNeighbors ++;
+				}
+				if(cells[][]) {
+					
+				}
+			}
+			//lower left
+			if(x == getWidth() && y == 0) {
+				if(cells[x][y-1].isAlive == true) {
+					numLiveNeighbors ++;
+				}
+				if(cells[x+1][y-1].isAlive == true) {
+					numLiveNeighbors ++;
+				}
+				if(cells[x+1][y].isAlive == true) {
+					numLiveNeighbors ++;
+				}
+			}
+			
+			
+		return numLiveNeighbors;
 	}
 
+	
+	
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
@@ -144,6 +197,7 @@ public class WorldPanel extends JPanel implements MouseListener, ActionListener 
 		//    which cell is clicked. Then toggle
 		//    the isAlive variable for that cell.
 		
+		cells[e.getX()/cellSize][e.getY()/cellSize].isAlive = true;
 		
 		
 		
