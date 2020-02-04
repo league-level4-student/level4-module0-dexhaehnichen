@@ -31,7 +31,7 @@ public class WorldPanel extends JPanel implements MouseListener, ActionListener 
 		//2. Calculate the cell size.
 		cellSize = w/cpr;
 		//3. Initialize the cell array to the appropriate size.
-		cells = new Cell[w][h];
+		cells = new Cell[w/cellSize][h/cellSize];
 		//3. Iterate through the array and initialize each cell.
 		//   Don't forget to consider the cell's dimensions when 
 		//   passing in the location.
@@ -130,7 +130,7 @@ public class WorldPanel extends JPanel implements MouseListener, ActionListener 
 						  ---------
 		*/
 		
-		// Broken, fix this
+		// Broken, fix this (all of this)
 		int numLiveNeighbors = 0;
 		
 		//corners
@@ -147,16 +147,19 @@ public class WorldPanel extends JPanel implements MouseListener, ActionListener 
 				}
 			}
 			//upper right
-			if(x == 0 && y == getHeight()) {
-				if(cells[x-1][y].isAlive == false) {
+			if(x == getWidth()/cellsPerRow && y == 0) {
+				if(cells[x-1][y].isAlive == true) {
 					numLiveNeighbors ++;
 				}
-				if(cells[][]) {
-					
+				if(cells[x-1][y+1].isAlive == true) {
+					numLiveNeighbors ++;
+				}
+				if(cells[x][y+1].isAlive == true) {
+					numLiveNeighbors ++;
 				}
 			}
 			//lower left
-			if(x == getWidth() && y == 0) {
+			if(x == 0 && y == getHeight()/cellsPerRow) {
 				if(cells[x][y-1].isAlive == true) {
 					numLiveNeighbors ++;
 				}
@@ -164,6 +167,141 @@ public class WorldPanel extends JPanel implements MouseListener, ActionListener 
 					numLiveNeighbors ++;
 				}
 				if(cells[x+1][y].isAlive == true) {
+					numLiveNeighbors ++;
+				}
+			}
+			//lower right
+			if(x == getWidth()/cellsPerRow && y == getHeight()/cellsPerRow) {
+				if(cells[x-1][y].isAlive == true) {
+					numLiveNeighbors ++;
+				}
+				if(cells[x-1][y-1].isAlive == true) {
+					numLiveNeighbors ++;
+				}
+				if(cells[x][y-1].isAlive == true) {
+					numLiveNeighbors ++;
+				}
+			}	
+		/*  _____ _______ _________
+			|353| |35553| |3555553|
+			|585| |58885| |5888885|
+			|353| |58885| |5888885|
+			----- |58885| |5888885|
+				  |35553| |5888885|
+				  ------- |5888885|
+						  |3555553|
+						  ---------
+		*/
+		
+		//edges 
+			//top
+			if(x > 0 && x < getWidth()/cellsPerRow && y == 0) {
+				if(cells[x-1][y].isAlive == true) {
+					numLiveNeighbors ++;
+				}
+				if(cells[x-1][y+1].isAlive == true) {
+					numLiveNeighbors ++;
+				}
+				if(cells[x][y+1].isAlive == true) {
+					numLiveNeighbors ++;
+				}
+				if(cells[x+1][y].isAlive == true) {
+					numLiveNeighbors ++;
+				}
+				if(cells[x+1][y+1].isAlive == true) {
+					numLiveNeighbors ++;
+				}
+			}
+			//bottom
+			if(x > 0 && x < getWidth()/cellsPerRow && y == getHeight()/cellsPerRow) {
+				if(cells[x-1][y].isAlive == true) {
+					numLiveNeighbors ++;
+				}
+				if(cells[x-1][y-1].isAlive == true) {
+					numLiveNeighbors ++;
+				}
+				if(cells[x][y-1].isAlive == true) {
+					numLiveNeighbors ++;
+				}
+				if(cells[x+1][y].isAlive == true) {
+					numLiveNeighbors ++;
+				}
+				if(cells[x+1][y-1].isAlive == true) {
+					numLiveNeighbors ++;
+				}
+			}
+			//left
+			if(y > 0 && y < getHeight()/cellsPerRow && x == 0) {
+				if(cells[x][y+1].isAlive == true) {
+					numLiveNeighbors ++;
+				}
+				if(cells[x+1][y+1].isAlive == true) {
+					numLiveNeighbors ++; 
+				}
+				if(cells[x+1][y].isAlive == true) {
+					numLiveNeighbors ++; 
+				}
+				if(cells[x+1][y-1].isAlive == true) {
+					numLiveNeighbors ++;
+				}
+				if(cells[x][y-1].isAlive == true) {
+					numLiveNeighbors ++;
+				}
+			}
+			//right
+			if(y > 0 && y < getHeight()/cellsPerRow && x == getWidth()/cellsPerRow) {
+				if(cells[x][y+1].isAlive == true) {
+					numLiveNeighbors ++;
+				}
+				if(cells[x-1][y+1].isAlive == true) {
+					numLiveNeighbors ++; 
+				}
+				if(cells[x-1][y].isAlive == true) {
+					numLiveNeighbors ++; 
+				}
+				if(cells[x-1][y-1].isAlive == true) {
+					numLiveNeighbors ++;
+				}
+				if(cells[x][y-1].isAlive == true) {
+					numLiveNeighbors ++;
+				}
+			}
+		/*  _____ _______ _________
+			|353| |35553| |3555553|
+			|585| |58885| |5888885|
+			|353| |58885| |5888885|
+			----- |58885| |5888885|
+				  |35553| |5888885|
+				  ------- |5888885|
+						  |3555553|
+						  ---------
+		*/
+			//middle
+			if(x > 0 && x < getWidth()/cellsPerRow && y > 0 && y < getHeight()/cellsPerRow) {
+				if(cells[x-1][y-1].isAlive == true) {
+					numLiveNeighbors ++;
+				}
+				if(cells[x][y-1].isAlive == true) {
+					numLiveNeighbors ++;
+				}
+				if(cells[x+1][y-1].isAlive == true) {
+					numLiveNeighbors ++;
+				}
+				//
+				if(cells[x-1][y].isAlive == true) {
+					numLiveNeighbors ++;
+				}
+				if(cells[x+1][y].isAlive == true) {
+					numLiveNeighbors ++;
+				}
+				//
+				if(cells[x-1][y+1].isAlive == true) {
+					numLiveNeighbors ++;
+				}
+				if(cells[x][y+1].isAlive == true) {
+					numLiveNeighbors ++;
+				}
+				if(cells[x+1][y+1].isAlive == true) {
 					numLiveNeighbors ++;
 				}
 			}
