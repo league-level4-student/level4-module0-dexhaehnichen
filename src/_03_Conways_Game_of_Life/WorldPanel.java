@@ -130,7 +130,7 @@ public class WorldPanel extends JPanel implements MouseListener, ActionListener 
 						  ---------
 		*/
 		
-		// Broken, fix this (all of this)
+		// Broken?
 		int numLiveNeighbors = 0;
 		
 		//corners
@@ -147,7 +147,7 @@ public class WorldPanel extends JPanel implements MouseListener, ActionListener 
 				}
 			}
 			//upper right
-			if(x == getWidth()/cellsPerRow && y == 0) {
+			if(x == getWidth() && y == 0) {
 				if(cells[x-1][y].isAlive == true) {
 					numLiveNeighbors ++;
 				}
@@ -159,7 +159,7 @@ public class WorldPanel extends JPanel implements MouseListener, ActionListener 
 				}
 			}
 			//lower left
-			if(x == 0 && y == getHeight()/cellsPerRow) {
+			if(x == 0 && y == getHeight()) {
 				if(cells[x][y-1].isAlive == true) {
 					numLiveNeighbors ++;
 				}
@@ -171,7 +171,7 @@ public class WorldPanel extends JPanel implements MouseListener, ActionListener 
 				}
 			}
 			//lower right
-			if(x == getWidth()/cellsPerRow && y == getHeight()/cellsPerRow) {
+			if(x == getWidth() && y == getHeight()) {
 				if(cells[x-1][y].isAlive == true) {
 					numLiveNeighbors ++;
 				}
@@ -195,7 +195,7 @@ public class WorldPanel extends JPanel implements MouseListener, ActionListener 
 		
 		//edges 
 			//top
-			if(x > 0 && x < getWidth()/cellsPerRow && y == 0) {
+			if(x > 0 && x < cellsPerRow-1 && y == 0) {
 				if(cells[x-1][y].isAlive == true) {
 					numLiveNeighbors ++;
 				}
@@ -203,8 +203,8 @@ public class WorldPanel extends JPanel implements MouseListener, ActionListener 
 					numLiveNeighbors ++;
 				}
 				if(cells[x][y+1].isAlive == true) {
-					numLiveNeighbors ++;
-				}
+					numLiveNeighbors ++;				
+				}										
 				if(cells[x+1][y].isAlive == true) {
 					numLiveNeighbors ++;
 				}
@@ -213,7 +213,7 @@ public class WorldPanel extends JPanel implements MouseListener, ActionListener 
 				}
 			}
 			//bottom
-			if(x > 0 && x < getWidth()/cellsPerRow && y == getHeight()/cellsPerRow) {
+			if(x > 0 && x < cellsPerRow-1 && y == cellsPerRow-1) {
 				if(cells[x-1][y].isAlive == true) {
 					numLiveNeighbors ++;
 				}
@@ -231,7 +231,7 @@ public class WorldPanel extends JPanel implements MouseListener, ActionListener 
 				}
 			}
 			//left
-			if(y > 0 && y < getHeight()/cellsPerRow && x == 0) {
+			if(y > 0 && y < cellsPerRow-1 && x == 0) {
 				if(cells[x][y+1].isAlive == true) {
 					numLiveNeighbors ++;
 				}
@@ -249,7 +249,7 @@ public class WorldPanel extends JPanel implements MouseListener, ActionListener 
 				}
 			}
 			//right
-			if(y > 0 && y < getHeight()/cellsPerRow && x == getWidth()/cellsPerRow) {
+			if(y > 0 && y < cellsPerRow-1 && x == cellsPerRow-1) {
 				if(cells[x][y+1].isAlive == true) {
 					numLiveNeighbors ++;
 				}
@@ -277,7 +277,7 @@ public class WorldPanel extends JPanel implements MouseListener, ActionListener 
 						  ---------
 		*/
 			//middle
-			if(x > 0 && x < getWidth()/cellsPerRow && y > 0 && y < getHeight()/cellsPerRow) {
+			if(x > 0 && x < cellsPerRow-1 && y > 0 && y < cellsPerRow-1) {
 				if(cells[x-1][y-1].isAlive == true) {
 					numLiveNeighbors ++;
 				}

@@ -31,16 +31,29 @@ public class Cell implements Drawable{
 		if(numNeighbors < 2 && isAlive == true) {
 			isAlive = false;
 		}
-		if(numNeighbors == 2 || numNeighbors == 3 && isAlive == true) {
+		else if(numNeighbors == 2 && isAlive == true|| numNeighbors == 3 && isAlive == true) {
 			isAlive = true;
 		}
-		if(numNeighbors > 3 && isAlive == true) {
+		else if(numNeighbors > 3 && isAlive == true) {
 			isAlive = false;
 		}
-		if(numNeighbors == 3 && isAlive == false) {
+		else if(numNeighbors == 3 && isAlive == false) {
 			isAlive = true;
 		}
 		
+//		if(isAlive) {
+//			if(numNeighbors < 2) {
+//				isAlive = false;
+//			}else if(numNeighbors == 2 || numNeighbors == 3) {
+//				isAlive = true;
+//			} else if(numNeighbors > 3) {
+//				isAlive = false;
+//			}
+//		} else {
+//			if(numNeighbors == 3) {
+//				isAlive = true;
+//			}
+//		}
 	}
 	
 	public int getX() {
@@ -61,7 +74,7 @@ public class Cell implements Drawable{
 			g.fillRect(x, y, cellSize, cellSize);
 		}
 		
-		if(isAlive == true) {
+		if(isAlive == false) {
 			g.drawRect(x, y, cellSize, cellSize);
 		}
 		

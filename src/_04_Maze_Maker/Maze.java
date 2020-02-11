@@ -4,6 +4,8 @@ import java.awt.Graphics;
 public class Maze {
 	//1. Create a 2D array of cells. Don't initialize it.
 
+	Cell[][] cells;
+	
 	private int width;
 	private int height;
 
@@ -11,10 +13,16 @@ public class Maze {
 		this.width = w;
 		this.height = h;
 
-		//2. Initialize the cells using the width and height varibles
-
-		//3. Iterated through each cell and initialize it
+		//2. Initialize the cells using the width and height variables
+		cells = new Cell[w][h];
+		
+		//3. Iterate through each cell and initialize it
 		//   using i and j as the location
+		for (int i = 0; i < cells.length; i++) {
+			for (int j = 0; j < cells[i].length; j++) {
+				cells[][];
+			}
+		}
 		
 	}
 
