@@ -91,6 +91,177 @@ public class MazeMaker{
 	//   Any unvisited neighbor of the passed in cell gets added
 	//   to the ArrayList
 	private static ArrayList<Cell> getUnvisitedNeighbors(Cell c) {
-		
-	}
+	ArrayList<Cell> unvisitedNeighbors = new ArrayList<Cell>();
+		if(c.getX() == 0 && c.getY() == 0) {
+			if(maze.cells[c.getX()+1][c.getY()].hasBeenVisited() == false) {
+				unvisitedNeighbors.add(maze.cells[c.getX()+1][c.getY()]);
+			}
+			if(maze.cells[c.getX()+1][c.getY()+1].hasBeenVisited() == false) {
+				unvisitedNeighbors.add(maze.cells[c.getX()+1][c.getY()+1]);
+			}
+			if(maze.cells[c.getX()][c.getY()+1].hasBeenVisited() == false) {
+				 unvisitedNeighbors.add(maze.cells[c.getX()][c.getY()+1]);
+			}
+		}
+		//upper right
+		if(c.getX() == width && c.getY() == 0) {
+			if(maze.cells[c.getX()-1][c.getY()].hasBeenVisited() == false) {
+				unvisitedNeighbors.add(maze.cells[c.getX()-1][c.getY()]);
+			}
+			if(maze.cells[c.getX()-1][c.getY()+1].hasBeenVisited() == false) {
+				unvisitedNeighbors.add(maze.cells[c.getX()-1][c.getY()+1]);
+			}
+			if(maze.cells[c.getX()][c.getY()+1].hasBeenVisited() == false) {
+				unvisitedNeighbors.add(maze.cells[c.getX()][c.getY()+1]);
+			}
+		}
+		//lower left
+		if(c.getX() == 0 && c.getY() == height) {
+			if(maze.cells[c.getX()][c.getY()-1].hasBeenVisited() == false) {
+				unvisitedNeighbors.add(maze.cells[c.getX()][c.getY()-1]);
+			}
+			if(maze.cells[c.getX()+1][c.getY()-1].hasBeenVisited() == false) {
+				unvisitedNeighbors.add(maze.cells[c.getX()+1][c.getY()-1]);
+			}
+			if(maze.cells[c.getX()+1][c.getY()].hasBeenVisited() == false) {
+				unvisitedNeighbors.add(maze.cells[c.getX()+1][c.getY()]);
+			}
+		}
+		//lower right
+		if(c.getX() == width && c.getY() == height) {
+			if(maze.cells[c.getX()-1][c.getY()].hasBeenVisited() == false) {
+				unvisitedNeighbors.add(maze.cells[c.getX()-1][c.getY()]);
+			}
+			if(maze.cells[c.getX()-1][c.getY()-1].hasBeenVisited() == false) {
+				unvisitedNeighbors.add(maze.cells[c.getX()-1][c.getY()-1]);
+			}
+			if(maze.cells[c.getX()][c.getY()-1].hasBeenVisited() == false) {
+				unvisitedNeighbors.add(maze.cells[c.getX()][c.getY()-1]);
+			}
+		}	
+	/*  _____ _______ _________
+		|353| |35553| |3555553|
+		|585| |58885| |5888885|
+		|353| |58885| |5888885|
+		----- |58885| |5888885|
+			  |35553| |5888885|
+			  ------- |5888885|
+					  |3555553|
+					  ---------
+	*/
+	
+	//edges 
+		//top
+		if(c.getX() > 0 && c.getX() < width && c.getY() == 0) {
+			if(maze.cells[c.getX()-1][c.getY()].hasBeenVisited() == false) {
+				unvisitedNeighbors.add(maze.cells[c.getX()-1][c.getY()]);
+			}
+			if(maze.cells[c.getX()-1][c.getY()+1].hasBeenVisited() == false) {
+				unvisitedNeighbors.add(maze.cells[c.getX()-1][c.getY()+1]);
+			}
+			if(maze.cells[c.getX()][c.getY()+1].hasBeenVisited() == false) {
+				unvisitedNeighbors.add(maze.cells[c.getX()][c.getY()+1]);				
+			}										
+			if(maze.cells[c.getX()+1][c.getY()].hasBeenVisited() == false) {
+				unvisitedNeighbors.add(maze.cells[c.getX()+1][c.getY()]);
+			}
+			if(maze.cells[c.getX()+1][c.getY()+1].hasBeenVisited() == false) {
+				unvisitedNeighbors.add(maze.cells[c.getX()+1][c.getY()+1]);
+			}
+		}
+		//bottom
+		if(c.getX() > 0 && c.getX() < width && c.getY() == height) {
+			if(maze.cells[c.getX()-1][c.getY()].hasBeenVisited() == false) {
+				unvisitedNeighbors.add(maze.cells[c.getX()-1][c.getY()]);
+			}
+			if(maze.cells[c.getX()-1][c.getY()-1].hasBeenVisited() == false) {
+				unvisitedNeighbors.add(maze.cells[c.getX()-1][c.getY()-1]);
+			}
+			if(maze.cells[c.getX()][c.getY()-1].hasBeenVisited() == false) {
+				unvisitedNeighbors.add(maze.cells[c.getX()][c.getY()-1]);
+			}
+			if(maze.cells[c.getX()+1][c.getY()].hasBeenVisited() == false) {
+				unvisitedNeighbors.add(maze.cells[c.getX()+1][c.getY()]);
+			}
+			if(maze.cells[c.getX()+1][c.getY()-1].hasBeenVisited() == false) {
+				unvisitedNeighbors.add(maze.cells[c.getX()+1][c.getY()-1]);
+			}
+		}
+		//left
+		if(c.getY() > 0 && c.getY() < height && c.getX() == 0) {
+			if(maze.cells[c.getX()][c.getY()+1].hasBeenVisited() == false) {
+				unvisitedNeighbors.add(maze.cells[c.getX()][c.getY()+1]);
+			}
+			if(maze.cells[c.getX()+1][c.getY()+1].hasBeenVisited() == false) {
+				unvisitedNeighbors.add(maze.cells[c.getX()+1][c.getY()+1]);
+			}
+			if(maze.cells[c.getX()+1][c.getY()].hasBeenVisited() == false) {
+				unvisitedNeighbors.add(maze.cells[c.getX()+1][c.getY()]);
+			}
+			if(maze.cells[c.getX()+1][c.getY()-1].hasBeenVisited() == false) {
+				unvisitedNeighbors.add(maze.cells[c.getX()+1][c.getY()-1]);
+			}
+			if(maze.cells[c.getX()][c.getY()-1].hasBeenVisited() == false) {
+				unvisitedNeighbors.add(maze.cells[c.getX()][c.getY()-1]);
+			}
+		}
+		//right
+		if(c.getY() > 0 && c.getY() < height && c.getX() == width) {
+			if(maze.cells[c.getX()][c.getY()+1].hasBeenVisited() == false) {
+				unvisitedNeighbors.add(maze.cells[c.getX()][c.getY()+1]);
+			}
+			if(maze.cells[c.getX()-1][c.getY()+1].hasBeenVisited() == false) {
+				unvisitedNeighbors.add(maze.cells[c.getX()-1][c.getY()+1]);
+			}
+			if(maze.cells[c.getX()-1][c.getY()].hasBeenVisited() == false) {
+				unvisitedNeighbors.add(maze.cells[c.getX()-1][c.getY()]);
+			}
+			if(maze.cells[c.getX()-1][c.getY()-1].hasBeenVisited() == false) {
+				unvisitedNeighbors.add(maze.cells[c.getX()-1][c.getY()-1]);
+			}
+			if(maze.cells[c.getX()][c.getY()-1].hasBeenVisited() == false) {
+				unvisitedNeighbors.add(maze.cells[c.getX()][c.getY()-1]);
+			}
+		}
+	/*  _____ _______ _________
+		|353| |35553| |3555553|
+		|585| |58885| |5888885|
+		|353| |58885| |5888885|
+		----- |58885| |5888885|
+			  |35553| |5888885|
+			  ------- |5888885|
+					  |3555553|
+					  ---------
+	*/
+		//middle
+		if(c.getX() > 0 && c.getX() < width && c.getY() > 0 && c.getY() < height) {
+			if(maze.cells[c.getX()-1][c.getY()-1].hasBeenVisited() == false) {
+				unvisitedNeighbors.add(maze.cells[c.getX()-1][c.getY()-1]);
+			}
+			if(maze.cells[c.getX()][c.getY()-1].hasBeenVisited() == false) {
+				unvisitedNeighbors.add(maze.cells[c.getX()][c.getY()-1]);
+			}
+			if(maze.cells[c.getX()+1][c.getY()-1].hasBeenVisited() == false) {
+				unvisitedNeighbors.add(maze.cells[c.getX()+1][c.getY()-1]);
+			}
+			//
+			if(maze.cells[c.getX()-1][c.getY()].hasBeenVisited() == false) {
+				unvisitedNeighbors.add(maze.cells[c.getX()-1][c.getY()]);
+			}
+			if(maze.cells[c.getX()+1][c.getY()].hasBeenVisited() == false) {
+				unvisitedNeighbors.add(maze.cells[c.getX()+1][c.getY()]);
+			}
+			//
+			if(maze.cells[c.getX()-1][c.getY()+1].hasBeenVisited() == false) {
+				unvisitedNeighbors.add(maze.cells[c.getX()-1][c.getY()+1]);
+			}
+			if(maze.cells[c.getX()][c.getY()+1].hasBeenVisited() == false) {
+				unvisitedNeighbors.add(maze.cells[c.getX()][c.getY()+1]);
+			}
+			if(maze.cells[c.getX()+1][c.getY()+1].hasBeenVisited() == false) {
+				unvisitedNeighbors.add(maze.cells[c.getX()+1][c.getY()+1]);
+			}
+		}
+		return unvisitedNeighbors;
+	}	
 }
