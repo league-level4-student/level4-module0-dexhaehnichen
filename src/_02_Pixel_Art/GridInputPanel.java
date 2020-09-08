@@ -13,7 +13,7 @@ public class GridInputPanel extends JPanel{
 	private JTextField rowsField;
 	private JTextField colsField;
 	private JButton submitButton;
-			
+	
 	PixelArtMaker pam;
 	
 	public GridInputPanel(PixelArtMaker pam) {
